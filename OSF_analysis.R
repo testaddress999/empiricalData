@@ -1,5 +1,6 @@
 library(lavaan)
-library(clavaan) # devtools::install_github("sooyongl/clavaan")
+library(clavaan) # devtools::install_github("testaddress999/clavaan")
+library(tidyverse)
 
 empdata <- read.csv("OSF_empirical_data.csv")
 
@@ -11,7 +12,7 @@ yS =~ 0*y1 + 1*y2 + 2*y3 + 3*y4
 "
 
 cfit <- 
-  a2 %>% 
+  empdata %>% 
   select(matches("^y")) %>% 
   clavaan::cgrowth(model = model, 
                    data = ., 
